@@ -5,11 +5,15 @@
  */
 package xmlcontects;
 import java.io.File;
+import java.util.Iterator;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import org.dom4j.Document;
+import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 /**
  *
  * @author 72873486
@@ -30,7 +34,7 @@ public class XmlContects {
         gui.doAll();
         
          //controllo se esiste il file
-        File f = new File(fileName+path);
+        File f = new File(path+fileName);
          if(!f.exists()){
             System.out.println("Non c'e'");
             final JPanel panel = new JPanel();
@@ -40,23 +44,24 @@ public class XmlContects {
              JOptionPane.showMessageDialog(panel, "The file exist, you can go!", "All okey", JOptionPane.INFORMATION_MESSAGE);
          }
                
-               
-                
-                
-   
+         Document document = null;      
+         SAXReader reader = new SAXReader();
+         try {
+		 document = reader.read(path+fileName);
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         
-        Document document = DocumentHelper.createDocument();
-        Element root = document.addElement("root");
-
-        Element author1 = root.addElement("author")
-            .addAttribute("name", "James")
-            .addAttribute("location", "UK")
-            .addText("James Strachan");
-
-        Element author2 = root.addElement("author")
-            .addAttribute("name", "Bob")
-            .addAttribute("location", "US")
-            .addText("Bob McWhirter");
+         
+         
+		Element root = document.getRootElement();
+         for (Iterator<Element> it = root.elementIterator(); it.hasNext();) {
+             Element element = it.next();
+             System.out.println(element.elementText("Name"));
+         }
+        
+       
 
    
     
