@@ -18,16 +18,18 @@ import org.dom4j.io.SAXReader;
  *
  * @author 72873486
  */
-public class XmlContects {
-
+public class XmlContacts {
+	
+	public static String fileName;
+	public static String path;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         
         //Constrisce filepath
-         String fileName = "xmlTest.xml";
-		String path = "./";
+        fileName = "xmlTest.xml";
+		path = "./";
         
         //fa partire la grafica
         Gui gui = new Gui();
@@ -43,7 +45,9 @@ public class XmlContects {
              final JPanel panel = new JPanel();
              JOptionPane.showMessageDialog(panel, "The file exist, you can go!", "All okey", JOptionPane.INFORMATION_MESSAGE);
          }
-               
+         
+         /* AREA TEST
+         //faccio il parse del documento      
          Document document = null;      
          SAXReader reader = new SAXReader();
          try {
@@ -54,14 +58,14 @@ public class XmlContects {
 		}
         
          
-         
+        //leggo l'attributo name dello studente 
 		Element root = document.getRootElement();
          for (Iterator<Element> it = root.elementIterator(); it.hasNext();) {
              Element element = it.next();
              System.out.println(element.elementText("Name"));
          }
         
-       
+       */
 
    
     

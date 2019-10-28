@@ -5,8 +5,15 @@
  */
 package xmlcontects;
 
+import java.util.Iterator;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 
 /**
  *
@@ -43,6 +50,7 @@ public class Gui extends javax.swing.JFrame {
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBtnActionPerformed(evt);
+                
             }
         });
 
@@ -95,11 +103,46 @@ public class Gui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        if(findLabel.getText().isEmpty()){
+        
+    	if(findLabel.getText().isEmpty()){
             final JPanel panel = new JPanel();
-
+            //genera messaggio di errore se il campo non è completo
             JOptionPane.showMessageDialog(panel, "You must inert a name!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
+        
+        String nameToFind = findLabel.getText();
+        
+        
+        //faccio il parse del documento      
+          Document document = null;      
+          SAXReader reader = new SAXReader();
+          try {
+ 		 document = reader.read(XmlContacts.path + XmlContacts.fileName);
+          } catch (DocumentException e) {
+ 			// TODO Auto-generated catch block
+ 			e.printStackTrace();
+          }
+         
+          
+         //leggo l'attributo name dello studente 
+ 		Element root = document.getRootElement();
+          for (Iterator<Element> it = root.elementIterator(); it.hasNext();) {
+              Element element = it.next();
+              
+              String contact = element.elementText("Name");
+              if(nameToFind.equalsIgnoreCase(contact)) {
+            	  
+            	  
+            	  String surname = element.elementText("Cognome");
+            	  String number = element.elementText("Number");
+            	  
+            	  
+            	  
+            	  final JPanel panel = new JPanel();
+                  JOptionPane.showMessageDialog(panel, contact+" "+surname+" " + number, "I found he", JOptionPane.INFORMATION_MESSAGE);
+              }
+          }
     }//GEN-LAST:event_searchBtnActionPerformed
 
     /**
