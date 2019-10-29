@@ -5,6 +5,8 @@
  */
 package xmlcontects;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Iterator;
 
 import javax.swing.JOptionPane;
@@ -24,8 +26,9 @@ public class XmlContacts {
 	public static String path;
     /**
      * @param args the command line arguments
+     * @throws IOException 
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
         //Constrisce filepath
         fileName = "xmlTest.xml";
@@ -45,6 +48,17 @@ public class XmlContacts {
              final JPanel panel = new JPanel();
              JOptionPane.showMessageDialog(panel, "The file exist, you can go!", "All okey", JOptionPane.INFORMATION_MESSAGE);
          }
+         
+         //***********************TEST************************
+         XMLWriter writer = new XMLWriter();
+         
+         
+         
+         
+         
+         
+
+         
          
          /* AREA TEST
          //faccio il parse del documento      

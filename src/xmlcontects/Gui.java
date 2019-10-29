@@ -126,23 +126,30 @@ public class Gui extends javax.swing.JFrame {
          
           
          //leggo l'attributo name dello studente 
+        int i = 0;
  		Element root = document.getRootElement();
           for (Iterator<Element> it = root.elementIterator(); it.hasNext();) {
               Element element = it.next();
               
-              String contact = element.elementText("Name");
+              String contact = element.elementText("name");
               if(nameToFind.equalsIgnoreCase(contact)) {
             	  
             	  
-            	  String surname = element.elementText("Cognome");
-            	  String number = element.elementText("Number");
+            	  String surname = element.elementText("surname");
+            	  String number = element.elementText("tNumber");
             	  
             	  
-            	  
+            	  i++;
             	  final JPanel panel = new JPanel();
                   JOptionPane.showMessageDialog(panel, contact+" "+surname+" " + number, "I found he", JOptionPane.INFORMATION_MESSAGE);
               }
           }
+          
+          if (i==0) {
+        	  final JPanel panel = new JPanel();
+              JOptionPane.showMessageDialog(panel, "The contats file doesen't contain this element", "Error", JOptionPane.ERROR_MESSAGE);
+          }
+          
     }//GEN-LAST:event_searchBtnActionPerformed
 
     /**

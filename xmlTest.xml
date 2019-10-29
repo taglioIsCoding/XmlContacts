@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Students>
-    <Student>
-        <Name>michele</Name>
-        <Cognome>tagliani</Cognome>
-        <Age>12</Age>
-        <Sex>true</Sex>
-        <Number>15621519</Number>
-    </Student>
-    <Student>
-        <Name>francesco</Name>
-        <Cognome>tagliani</Cognome>
-        <Age>12</Age>
-        <Sex>true</Sex>
-        <Number>15621519</Number>
-    </Student>
-    <Student>
-        <Name>michele</Name>
-        <Cognome>scalato</Cognome>
-        <Age>13</Age>
-        <Sex>true</Sex>
-        <Number>030221122</Number>
-    </Student>
-</Students>
+<People xmlns="https://www.journaldev.com/employee">
+    <Person>
+        <name>Dmitry</name>
+        <surname>sfjsadjkfl</surname>
+        <sex>Male</sex>
+        <tNumber>1234</tNumber>
+    </Person>
+    <Person>
+        <name>Rezida</name>
+        <surname>tagliani</surname>
+        <sex>Female</sex>
+        <tNumber>4321</tNumber>
+    </Person>
+</People>
