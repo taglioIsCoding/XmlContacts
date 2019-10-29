@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <People xmlns="https://www.journaldev.com/employee">
-    <Person>
-        <name>Dmitry</name>
-        <surname>sfjsadjkfl</surname>
-        <sex>Male</sex>
-        <tNumber>1234</tNumber>
-    </Person>
-    <Person>
-        <name>Rezida</name>
-        <surname>tagliani</surname>
-        <sex>Female</sex>
-        <tNumber>4321</tNumber>
-    </Person>
+<Person>
+<name>Dmitry</name>
+<surname>sfjsadjkfl</surname>
+<sex>Male</sex>
+<tNumber>1234</tNumber>
+</Person>
+<Person>
+<name>Rezida</name>
+<surname>tagliani</surname>
+<sex>Female</sex>
+<tNumber>4321</tNumber>
+</Person>
 </People>
