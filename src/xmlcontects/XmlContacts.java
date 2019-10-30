@@ -22,16 +22,17 @@ import org.dom4j.io.SAXReader;
  */
 public class XmlContacts {
 	
+	//variabili per indicare ilpercorso della nostra rubrica
 	public static String fileName;
 	public static String path;
-	public static int ID = 0;
+	
     /**
      * @param args the command line arguments
      * @throws IOException 
      */
     public static void main(String[] args) throws IOException {
         
-        //Constrisce filepath
+        //Costruisce filepath
         fileName = "xmlTest.xml";
 		path = "./";
         
@@ -42,12 +43,16 @@ public class XmlContacts {
          //controllo se esiste il file
         File f = new File(path+fileName);
          if(!f.exists()){
-            System.out.println("Non c'e'");
+            //se il file non c'e' genera una finestra di errore 
             final JPanel panel = new JPanel();
             JOptionPane.showMessageDialog(panel, "The contats file doesen't exist, one will be create", "Error", JOptionPane.ERROR_MESSAGE);
+            
+            //in caso il file non esistesse ne crea immediatamente uno
             XMLWriter writer = new XMLWriter();
          
          }else{
+        	 
+        	 //se il file esiste avvisa l'utente che va tutto bene e che puo continuare l'esecuzione
              final JPanel panel = new JPanel();
              JOptionPane.showMessageDialog(panel, "The file exist, you can go!", "All okey", JOptionPane.INFORMATION_MESSAGE);
          }

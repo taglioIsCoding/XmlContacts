@@ -236,12 +236,12 @@ public class Gui extends javax.swing.JFrame {
         
         
         //faccio il parse del documento      
-          Document document = null;      
-          SAXReader reader = new SAXReader();
-          try {
+         Document document = null;      
+         SAXReader reader = new SAXReader();
+         try {
  		 document = reader.read(XmlContacts.path + XmlContacts.fileName);
           } catch (DocumentException e) {
- 			// TODO Auto-generated catch block
+ 			
  			e.printStackTrace();
           }
          
@@ -249,11 +249,12 @@ public class Gui extends javax.swing.JFrame {
          //leggo l'attributo name dello studente 
         int i = 0;
  		Element root = document.getRootElement();
-          for (Iterator<Element> it = root.elementIterator(); it.hasNext();) {
+ 		
+        for (Iterator<Element> it = root.elementIterator(); it.hasNext();) {
               Element element = it.next();
-              
               String contact = element.elementText("name");
-              if(nameToFind.equalsIgnoreCase(contact)) {
+              
+               if(nameToFind.equalsIgnoreCase(contact)) {
             	  
             	  
             	  String surname = element.elementText("surname");
@@ -271,7 +272,7 @@ public class Gui extends javax.swing.JFrame {
                   Element element = it.next();
                   
                   String contact = element.elementText("surname");
-                  if(nameToFind.equalsIgnoreCase(contact)) {
+                   if(nameToFind.equalsIgnoreCase(contact)) {
                 	  
                 	  
                 	  String name = element.elementText("name");
@@ -282,7 +283,7 @@ public class Gui extends javax.swing.JFrame {
                 	  final JPanel panel = new JPanel();
                       JOptionPane.showMessageDialog(panel, contact+" "+name+" " + number, "I found:", JOptionPane.INFORMATION_MESSAGE);
                   }
-               }
+              }
           }
           
           if (i==0) {
@@ -352,11 +353,11 @@ public class Gui extends javax.swing.JFrame {
             			, "Succes", JOptionPane.INFORMATION_MESSAGE);
         }
     
-        nameFld.setText("");
-        surnameFld.setText("");
-        numberFld.setText("");
-        rdbMale.setSelected(true);
-        rdbFema.setSelected(false);
+           nameFld.setText("");
+           surnameFld.setText("");
+           numberFld.setText("");
+           rdbMale.setSelected(true);
+           rdbFema.setSelected(false);
         
 }
 

@@ -21,28 +21,28 @@ public class XMLWriter {
             dBuilder = dbFactory.newDocumentBuilder();
             Document document = dBuilder.newDocument();
 
-            //add elements to document
+            //aggiunge elementi al file rubrica
             Element rootElement = document.createElementNS("taglioIsCoding", "People");
-            //append root element to document
+            //assegna una root
             document.appendChild(rootElement);
 
-            //append child element to root element
+            //crea e assegna dei sottoelenti alla root
             rootElement.appendChild(getPerson(document,  "Prova", "rossi", "Male", "0301111111"));
             rootElement.appendChild(getPerson(document,  "Mario", "prova", "Female", "030222222222222"));
 
-            //for output to file, console
+            //Metodi per la stampa
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
 
-            //for pretty print
+            //permette di stampare i vari elementi con una formattazone corretta(uno sotto l'altro)
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             DOMSource source = new DOMSource(document);
 
-            //write to console or file
+            //stampa sul file e sulla console quello che ha fatto
             StreamResult console = new StreamResult(System.out);
             StreamResult file = new StreamResult(new File("./xmlTest.xml"));
 
-            //write data
+            //scrive i dati
             transformer.transform(source, console);
             transformer.transform(source, file);
             System.out.println("DONE");
@@ -51,6 +51,7 @@ public class XMLWriter {
         }
     }
 
+    //metodo per generare i sottoelenti persona e per assegnargli dei valori
     private static Node getPerson(Document doc,
                                     String name, String surname,
                                     String sex,
@@ -64,7 +65,7 @@ public class XMLWriter {
 
         return person;
     }
-    //utility method to create text node
+    //metodo per creare il nodo successivo
     private static Node getEmployeeElements(Document doc, Element element, String name, String value) {
         Element node = doc.createElement(name);
         node.appendChild(doc.createTextNode(value));
