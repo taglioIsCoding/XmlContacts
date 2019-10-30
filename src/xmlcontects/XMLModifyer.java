@@ -108,8 +108,9 @@ public class XMLModifyer {
             Node node = person.getElementsByTagName("sex").item(0);
             person.removeChild(node);
         }
-    }*/
-    
+    }
+ */    
+	
     public void deletePerson(String nameToFind) throws ParserConfigurationException, SAXException, IOException, TransformerException{
     	System.out.println("sono quiiiiiiiiiiiiii");
     	String filePath = "./xmlTest.xml";
@@ -121,20 +122,22 @@ public class XMLModifyer {
         Document doc = dBuilder.parse(xmlFile);
         doc.getDocumentElement().normalize();
     	
-        
         Element root = doc.getDocumentElement();
         NodeList people = doc.getElementsByTagName("Person");
         Element person;
-        
+        //cicla per ogni persona
         for(int i=0; i<people.getLength();i++){
             person = (Element) people.item(i);
-            if(person.getElementsByTagName("name").toString().equalsIgnoreCase(nameToFind)) {
-            	System.out.println("L'ho trovatoooooooooooooo");
-            	//Qui MAnca il metodo
+            String name = person.getElementsByTagName("name").item(0).getFirstChild().getNodeValue();
+            System.out.println(name);
+            
+            if(name.equalsIgnoreCase(nameToFind)) {
+            	System.out.println("l'ho trovato");
+            	root.removeChild(person);
             }
+            
         }
-        
-        
+       
        
         
         
@@ -147,8 +150,15 @@ public class XMLModifyer {
         transformer.transform(source, result);
         
         System.out.println("XML file updated successfully");
-    	
-    }
+            	
+            }
+
+        
+        
+       
+        
+        
+        
     	/* 	
     }
     private static void addElement(Document doc){

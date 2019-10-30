@@ -210,7 +210,7 @@ public class Gui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     protected void removeBtnActionPerformed(java.awt.event.ActionEvent evt) throws ParserConfigurationException, SAXException, IOException, TransformerException {
-		System.out.println("VAAAAAAAAAAAAAAAAAAAAAAAAAA");
+		
     	String nameToFind = findLabel.getText();
 		System.out.println(nameToFind);
 		
