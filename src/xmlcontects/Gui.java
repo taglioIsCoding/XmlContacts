@@ -218,6 +218,8 @@ public class Gui extends javax.swing.JFrame {
 		mod.deletePerson(nameToFind);
 		
 		
+		findLabel.setText("");
+		
 		
 	}
 
@@ -260,14 +262,17 @@ public class Gui extends javax.swing.JFrame {
             	  
             	  i++;
             	  final JPanel panel = new JPanel();
-                  JOptionPane.showMessageDialog(panel, contact+" "+surname+" " + number, "I found he", JOptionPane.INFORMATION_MESSAGE);
+                  JOptionPane.showMessageDialog(panel, contact+" "+surname+" " + number, "I found:", JOptionPane.INFORMATION_MESSAGE);
               }
           }
+          
           
           if (i==0) {
         	  final JPanel panel = new JPanel();
               JOptionPane.showMessageDialog(panel, "The contats file doesen't contain this element", "Error", JOptionPane.ERROR_MESSAGE);
           }
+          
+          findLabel.setText("");
           
     }//GEN-LAST:event_searchBtnActionPerformed
 
@@ -285,7 +290,32 @@ public class Gui extends javax.swing.JFrame {
         	JOptionPane.showMessageDialog(panel, "You must insert all the parameter", "Error", JOptionPane.ERROR_MESSAGE);
         	return;
         	
-        }else {
+        }else{
+        
+        	for(int i =0; i<numberFld.getText().length(); i++) {
+        		
+        		if(numberFld.getText().charAt(i)!= '0'&&
+        				numberFld.getText().charAt(i)!= '1'&&
+        				numberFld.getText().charAt(i)!= '2'&&
+        				numberFld.getText().charAt(i)!= '3'&&
+        				numberFld.getText().charAt(i)!= '4'&&
+        				numberFld.getText().charAt(i)!= '5'&&
+        				numberFld.getText().charAt(i)!= '6'&&
+        				numberFld.getText().charAt(i)!= '7'&&
+        				numberFld.getText().charAt(i)!= '8'&&
+        				numberFld.getText().charAt(i)!= '9'&&
+        				numberFld.getText().charAt(i)!= '+') {
+        			
+        			final JPanel panel = new JPanel();
+                	
+                	JOptionPane.showMessageDialog(panel, "You must inser true telephone number", "Error", JOptionPane.ERROR_MESSAGE);
+                	return;
+        			
+        		}
+        
+        	}
+       
+        
         	String sex;
         	if(rdbMale.isSelected()){
         		sex = "Male";
@@ -301,15 +331,18 @@ public class Gui extends javax.swing.JFrame {
             			"Surname: "+surnameFld.getText()+"\r\n"+
             			"Sex: "+sex+"\r\n"+
             			"T Number: "+numberFld.getText()
-            			, "Add new Person!", JOptionPane.INFORMATION_MESSAGE);
+            			, "Succes", JOptionPane.INFORMATION_MESSAGE);
         }
+    
         nameFld.setText("");
         surnameFld.setText("");
         numberFld.setText("");
         rdbMale.setSelected(true);
         rdbFema.setSelected(false);
         
-    }
+}
+
+
 
     
     public static void doAll() {

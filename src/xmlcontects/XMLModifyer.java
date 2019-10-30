@@ -125,6 +125,7 @@ public class XMLModifyer {
         Element root = doc.getDocumentElement();
         NodeList people = doc.getElementsByTagName("Person");
         Element person;
+        int j = 0;
         //cicla per ogni persona
         for(int i=0; i<people.getLength();i++){
             person = (Element) people.item(i);
@@ -134,6 +135,7 @@ public class XMLModifyer {
             if(name.equalsIgnoreCase(nameToFind)) {
             	System.out.println("l'ho trovato");
             	root.removeChild(person);
+            	j++;
             }
             
         }
@@ -150,8 +152,18 @@ public class XMLModifyer {
         transformer.transform(source, result);
         
         System.out.println("XML file updated successfully");
+        
+        if(j > 0) {
+        	final JPanel panel = new JPanel();
+        	JOptionPane.showMessageDialog(panel, "Deleted "+j+" elements" ,"Delete", JOptionPane.INFORMATION_MESSAGE);
+        }else {
+        	final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "The contats file doesen't contain this element", "Error", JOptionPane.ERROR_MESSAGE);
+        	
+        }
+        
             	
-            }
+     }
 
         
         
