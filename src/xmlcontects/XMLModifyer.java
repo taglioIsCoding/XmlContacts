@@ -32,87 +32,9 @@ public class XMLModifyer {
 	}
 	
 	
-	/*
-    public void docu(){
-        String filePath = "./xmlTest.xml";
-        File xmlFile = new File(filePath);
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder;
-        try{
-            dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(xmlFile);
-            doc.getDocumentElement().normalize();
-            
-            //update attribute value
-            updateAttributeValue(doc);
-
-            //update Element value
-            updateElementValue(doc);
-
-            //delete element
-            deleteElement(doc);
-
-            //add new element
-            addElement(doc);
-
-            doc.getDocumentElement().normalize();
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("./xmlTest.xml"));
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            transformer.transform(source, result);
-            System.out.println("XML file updated successfully");
-        } catch (ParserConfigurationException | IOException | SAXException | TransformerException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static void updateAttributeValue(Document doc) {
-        NodeList people = doc.getElementsByTagName("People");
-        Element person;
-        //loop for each employee
-        for(int i=0; i<people.getLength();i++){
-            person = (Element) people.item(i);
-            String gender = person.getElementsByTagName("sex").item(0).getFirstChild().getNodeValue();
-            if(gender.equalsIgnoreCase("male")){
-                //prefix id attribute with M
-                person.setAttribute("id", "M"+person.getAttribute("id"));
-            }else{
-                //prefix id attribute with F
-                person.setAttribute("id", "F"+person.getAttribute("id"));
-            }
-        }
-    }
-
-
-    private static void updateElementValue(Document doc){
-        NodeList people = doc.getElementsByTagName("People");
-        Element person;
-        //loop for each employee
-        for(int i=0; i<people.getLength();i++){
-            person = (Element) people.item(i);
-            Node name = person.getElementsByTagName("name").item(0).getFirstChild();
-            name.setNodeValue(name.getNodeValue().toUpperCase());
-        }
-    }
-    
-    
-
-    public static void deleteElement(Document doc){
-        NodeList people = doc.getElementsByTagName("Person");
-        Element person;
-        //loop for each employee
-        for(int i=0; i<people.getLength();i++){
-            person = (Element) people.item(i);
-            Node node = person.getElementsByTagName("sex").item(0);
-            person.removeChild(node);
-        }
-    }
- */    
 	
     public void deletePerson(String nameToFind) throws ParserConfigurationException, SAXException, IOException, TransformerException{
-    	System.out.println("sono quiiiiiiiiiiiiii");
+    	
     	String filePath = "./xmlTest.xml";
         File xmlFile = new File(filePath);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -139,6 +61,8 @@ public class XMLModifyer {
             }
             
         }
+        
+        
        
        
         
@@ -169,23 +93,7 @@ public class XMLModifyer {
         
        
         
-        
-        
-    	/* 	
-    }
-    private static void addElement(Document doc){
-        NodeList people = doc.getElementsByTagName("People");
-        Element person = null;
 
-        //loop for each employee
-        for(int i=0; i<people.getLength();i++){
-            person = (Element) people.item(i);
-            Element salaryElement = doc.createElement("tNumber");
-            salaryElement.appendChild(doc.createTextNode("1111111111111111"));
-            person.appendChild(salaryElement);
-        }
-    }
-    */
     public void addPerson(String name, String surname, String sex, String tNumber) throws ParserConfigurationException, SAXException, IOException, TransformerException, XMLStreamException {
     	String filePath = "./xmlTest.xml";
         File xmlFile = new File(filePath);

@@ -266,6 +266,24 @@ public class Gui extends javax.swing.JFrame {
               }
           }
           
+          if (i==0) {
+        	  for (Iterator<Element> it = root.elementIterator(); it.hasNext();) {
+                  Element element = it.next();
+                  
+                  String contact = element.elementText("surname");
+                  if(nameToFind.equalsIgnoreCase(contact)) {
+                	  
+                	  
+                	  String name = element.elementText("name");
+                	  String number = element.elementText("tNumber");
+                	  
+                	  
+                	  i++;
+                	  final JPanel panel = new JPanel();
+                      JOptionPane.showMessageDialog(panel, contact+" "+name+" " + number, "I found:", JOptionPane.INFORMATION_MESSAGE);
+                  }
+               }
+          }
           
           if (i==0) {
         	  final JPanel panel = new JPanel();
