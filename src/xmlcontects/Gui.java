@@ -5,15 +5,20 @@
  */
 package xmlcontects;
 
+import java.io.IOException;
 import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.transform.TransformerException;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -84,7 +89,13 @@ public class Gui extends javax.swing.JFrame {
         addBtn.setText("Add");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBtnActionPerformed(evt);
+                try {
+					addBtnActionPerformed(evt);
+				} catch (ParserConfigurationException | SAXException | IOException | TransformerException
+						| XMLStreamException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -236,13 +247,29 @@ public class Gui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rdbFemaActionPerformed
 
-    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addBtnActionPerformed
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) throws ParserConfigurationException, SAXException, IOException, TransformerException, XMLStreamException {//GEN-FIRST:event_addBtnActionPerformed
+    	
+    	//controllo dei dati inseriti dall'utente
+        if(nameFld.getText().isEmpty()||numberFld.getText().isEmpty()||surnameFld.getText().isEmpty()||(!rdbMale.isSelected() && !rdbFema.isSelected())) {
+        	
+        	final JPanel panel = new JPanel();
+        	System.out.println("Non va bene!");
+        	JOptionPane.showMessageDialog(panel, "You must insert all the parameter", "Error", JOptionPane.ERROR_MESSAGE);
+        	return;
+        	
+        }else {
+        	String sex;
+        	if(rdbMale.isSelected()){
+        		sex = "Male";
+        	}else {
+        		sex = "Female";
+        	}
+        	XMLModifyer mod = new XMLModifyer();
+        	mod.addPerson(nameFld.getText(), surnameFld.getText(), sex, numberFld.getText() );
+        }
+    }
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void doAll() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

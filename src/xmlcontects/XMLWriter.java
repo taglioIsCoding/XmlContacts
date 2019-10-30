@@ -21,7 +21,7 @@ public class XMLWriter {
             Document document = dBuilder.newDocument();
 
             //add elements to document
-            Element rootElement = document.createElementNS("https://www.journaldev.com/employee", "People");
+            Element rootElement = document.createElementNS("taglioIsCoding", "People");
             //append root element to document
             document.appendChild(rootElement);
 
@@ -69,4 +69,6 @@ public class XMLWriter {
         node.appendChild(doc.createTextNode(value));
         return node;
     }
+    
+    
 }

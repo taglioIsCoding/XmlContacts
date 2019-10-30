@@ -44,6 +44,8 @@ public class XmlContacts {
             System.out.println("Non c'e'");
             final JPanel panel = new JPanel();
             JOptionPane.showMessageDialog(panel, "The contats file doesen't exist, one will be create", "Error", JOptionPane.ERROR_MESSAGE);
+            XMLWriter writer = new XMLWriter();
+         
          }else{
              final JPanel panel = new JPanel();
              JOptionPane.showMessageDialog(panel, "The file exist, you can go!", "All okey", JOptionPane.INFORMATION_MESSAGE);
@@ -52,6 +54,7 @@ public class XmlContacts {
          //***********************TEST************************
          XMLWriter writer = new XMLWriter();
          
+        // XMLModifyer modify = new XMLModifyer();
          
          
          
