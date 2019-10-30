@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package xmlcontacts2;
+package xmlcontects;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -91,11 +91,27 @@ public class Gui extends javax.swing.JFrame {
         addBtn.setText("Add");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBtnActionPerformed(evt);
+                try {
+					addBtnActionPerformed(evt);
+				} catch (ParserConfigurationException | SAXException | IOException | TransformerException
+						| XMLStreamException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
         removeBtn.setText("Remove");
+        removeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+					removeBtnActionPerformed(evt);
+				} catch (ParserConfigurationException | SAXException | IOException | TransformerException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -193,43 +209,14 @@ public class Gui extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    protected void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {
-		String nameToFind = nameFld.getText();
+    protected void removeBtnActionPerformed(java.awt.event.ActionEvent evt) throws ParserConfigurationException, SAXException, IOException, TransformerException {
+		System.out.println("VAAAAAAAAAAAAAAAAAAAAAAAAAA");
+    	String nameToFind = findLabel.getText();
+		System.out.println(nameToFind);
 		
-		 Document document = null;      
-         SAXReader reader = new SAXReader();
-         try {
-		 document = reader.read(XmlContacts.path + XmlContacts.fileName);
-         } catch (DocumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-         }
-        
-         
-        //leggo l'attributo name dello studente 
-       int i = 0;
-		Element root = document.getRootElement();
-         for (Iterator<Element> it = root.elementIterator(); it.hasNext();) {
-             Element element = it.next();
-             
-             String contact = element.elementText("name");
-             if(nameToFind.equalsIgnoreCase(contact)) {
-           	  
-           	  
-           	 
-           	  
-           	  root.remove(element);
-           	  i++;
-           	  //final JPanel panel = new JPanel();
-                // JOptionPane.showMessageDialog(panel, contact+" "+surname+" " + number, "I found he", JOptionPane.INFORMATION_MESSAGE);
-             }
-         }
-         
-         if (i==0) {
-       	  final JPanel panel = new JPanel();
-             JOptionPane.showMessageDialog(panel, "The contats file doesen't contain this element", "Error", JOptionPane.ERROR_MESSAGE);
-         }
-         
+		XMLModifyer mod = new XMLModifyer();
+		mod.deletePerson(nameToFind);
+		
 		
 		
 	}
