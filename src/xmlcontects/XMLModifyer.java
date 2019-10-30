@@ -1,27 +1,29 @@
 package xmlcontects;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 
+import java.io.IOException;
+import java.util.Iterator;
+
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.stream.XMLStreamException;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.XMLWriter;
+import org.dom4j.DocumentException;
+import org.dom4j.io.SAXReader;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import javax.xml.stream.XMLOutputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
+
 
 public class XMLModifyer {
 	
@@ -29,6 +31,8 @@ public class XMLModifyer {
 		
 	}
 	
+	
+	/*
     public void docu(){
         String filePath = "./xmlTest.xml";
         File xmlFile = new File(filePath);
@@ -94,18 +98,46 @@ public class XMLModifyer {
     }
     
     
-
-    private static void deleteElement(Document doc){
+*/
+    public static void deleteElement(Document doc){
         NodeList people = doc.getElementsByTagName("Person");
         Element person;
         //loop for each employee
         for(int i=0; i<people.getLength();i++){
             person = (Element) people.item(i);
-            Node genderNode = person.getElementsByTagName("sex").item(0);
-            person.removeChild(genderNode);
+            Node node = person.getElementsByTagName("sex").item(0);
+            person.removeChild(node);
         }
     }
+    
+    public void deletePerson(org.dom4j.Element element) throws ParserConfigurationException, SAXException, IOException, TransformerException{
+    	String filePath = "./xmlTest.xml";
+        File xmlFile = new File(filePath);
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder;
+        //faccio il parse del documento
+        dBuilder = dbFactory.newDocumentBuilder();
+        Document doc = dBuilder.parse(xmlFile);
+        doc.getDocumentElement().normalize();
     	
+        
+        
+       
+        
+        
+        doc.getDocumentElement().normalize();
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource source = new DOMSource(doc);
+        StreamResult result = new StreamResult(new File("./xmlTest.xml"));
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        transformer.transform(source, result);
+        
+        System.out.println("XML file updated successfully");
+    	
+    }
+    	/* 	
+    }
     private static void addElement(Document doc){
         NodeList people = doc.getElementsByTagName("People");
         Element person = null;
@@ -118,18 +150,18 @@ public class XMLModifyer {
             person.appendChild(salaryElement);
         }
     }
-    
+    */
     public void addPerson(String name, String surname, String sex, String tNumber) throws ParserConfigurationException, SAXException, IOException, TransformerException, XMLStreamException {
     	String filePath = "./xmlTest.xml";
         File xmlFile = new File(filePath);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder;
-        
+        //faccio il parse del documento
         dBuilder = dbFactory.newDocumentBuilder();
         Document doc = dBuilder.parse(xmlFile);
         doc.getDocumentElement().normalize();
         
-        
+        //creo il novo elemento
         Element root = doc.getDocumentElement();
         Element person = doc.createElement("Person");
         person.appendChild(getEmployeeElements(doc, person, "name", name));
@@ -142,14 +174,13 @@ public class XMLModifyer {
 
 
         
-        
+        //riscivo e formatto l'elemento inserito
         doc.getDocumentElement().normalize();
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         DOMSource source = new DOMSource(doc);
         StreamResult result = new StreamResult(new File("./xmlTest.xml"));
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-        //transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "0");
         transformer.transform(source, result);
         
         System.out.println("XML file updated successfully");
@@ -158,10 +189,15 @@ public class XMLModifyer {
     
     
     		//utility method to create text node
-    		private static Node getEmployeeElements(Document doc, Element element, String name, String value) {
-    			Element node = doc.createElement(name);
-    			node.appendChild(doc.createTextNode(value));
-    			return node;
-    		}
+	private static Node getEmployeeElements(Document doc, Element element, String name, String value) {
+		Element node = doc.createElement(name);
+	    node.appendChild(doc.createTextNode(value));
+		return node;
+		}
+	
+	
+      
+	
+    		
     
 }

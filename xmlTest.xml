@@ -1,52 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <People xmlns="taglioIsCoding">
-            
-    
-    <Person>
-                        
         
+    <Person>
+                
         <name>Dmitry</name>
-                        
-        
+                
         <surname>sfjsadjkfl</surname>
-                        
-        
+                
         <sex>Male</sex>
-                        
-        
+                
         <tNumber>1234</tNumber>
-                    
-    
-    </Person>
             
-    
-    <Person>
-                        
+    </Person>
         
+    <Person>
+                
         <name>Rezida</name>
-                        
-        
+                
         <surname>tagliani</surname>
-                        
-        
+                
         <sex>Female</sex>
-                        
-        
+                
         <tNumber>4321</tNumber>
-                    
-    
-    </Person>
-        
-    
-    <Person>
-                
-        <name>michele</name>
-                
-        <surname>tagliani</surname>
-                
-        <sex>Male</sex>
-                
-        <tNumber>23213213</tNumber>
             
     </Person>
     
@@ -54,6 +29,6 @@
         <name>michele</name>
         <surname>tagliani</surname>
         <sex>Male</sex>
-        <tNumber>23213213</tNumber>
+        <tNumber>qewqw</tNumber>
     </Person>
 </People>

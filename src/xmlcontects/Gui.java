@@ -5,6 +5,7 @@
  */
 package xmlcontects;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.Iterator;
 
@@ -18,6 +19,7 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
@@ -100,6 +102,12 @@ public class Gui extends javax.swing.JFrame {
         });
 
         removeBtn.setText("Remove");
+        removeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                
+					removeBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -193,7 +201,48 @@ public class Gui extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+    protected void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {
+		String nameToFind = nameFld.getText();
+		
+		 Document document = null;      
+         SAXReader reader = new SAXReader();
+         try {
+		 document = reader.read(XmlContacts.path + XmlContacts.fileName);
+         } catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+         }
+        
+         
+        //leggo l'attributo name dello studente 
+       int i = 0;
+		Element root = document.getRootElement();
+         for (Iterator<Element> it = root.elementIterator(); it.hasNext();) {
+             Element element = it.next();
+             
+             String contact = element.elementText("name");
+             if(nameToFind.equalsIgnoreCase(contact)) {
+           	  
+           	  
+           	 
+           	  
+           	  root.remove(element);
+           	  i++;
+           	  //final JPanel panel = new JPanel();
+                // JOptionPane.showMessageDialog(panel, contact+" "+surname+" " + number, "I found he", JOptionPane.INFORMATION_MESSAGE);
+             }
+         }
+         
+         if (i==0) {
+       	  final JPanel panel = new JPanel();
+             JOptionPane.showMessageDialog(panel, "The contats file doesen't contain this element", "Error", JOptionPane.ERROR_MESSAGE);
+         }
+         
+		
+		
+	}
+
+	private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         
     	if(findLabel.getText().isEmpty()){
             final JPanel panel = new JPanel();
@@ -264,6 +313,7 @@ public class Gui extends javax.swing.JFrame {
         	}else {
         		sex = "Female";
         	}
+        	//creo il modifyer e gli fornisco i dati
         	XMLModifyer mod = new XMLModifyer();
         	mod.addPerson(nameFld.getText(), surnameFld.getText(), sex, numberFld.getText() );
         }
@@ -284,7 +334,9 @@ public class Gui extends javax.swing.JFrame {
                 new Gui().setVisible(true);
             }
         });
+         
     }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
