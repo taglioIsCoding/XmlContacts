@@ -13,6 +13,7 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 
 public class XMLWriter {
+	
     public XMLWriter() {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder;
@@ -26,8 +27,8 @@ public class XMLWriter {
             document.appendChild(rootElement);
 
             //append child element to root element
-            rootElement.appendChild(getPerson(document,  "Dmitry", "sfjsadjkfl", "Male", "1234"));
-            rootElement.appendChild(getPerson(document,  "Rezida", "tagliani", "Female", "4321"));
+            rootElement.appendChild(getPerson(document,  "Prova", "rossi", "Male", "0301111111"));
+            rootElement.appendChild(getPerson(document,  "Mario", "prova", "Female", "030222222222222"));
 
             //for output to file, console
             TransformerFactory transformerFactory = TransformerFactory.newInstance();

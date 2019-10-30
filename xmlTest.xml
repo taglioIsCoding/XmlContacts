@@ -1,28 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <People xmlns="taglioIsCoding">
-        
     <Person>
-                
-        <name>Dmitry</name>
-                
-        <surname>sfjsadjkfl</surname>
-                
+        <name>Prova</name>
+        <surname>rossi</surname>
         <sex>Male</sex>
-                
-        <tNumber>1234</tNumber>
-            
+        <tNumber>0301111111</tNumber>
     </Person>
-        
     <Person>
-                
-        <name>Rezida</name>
-                
-        <surname>tagliani</surname>
-                
+        <name>Mario</name>
+        <surname>prova</surname>
         <sex>Female</sex>
-                
-        <tNumber>4321</tNumber>
-            
+        <tNumber>030222222222222</tNumber>
     </Person>
-    
 </People>

@@ -24,6 +24,7 @@ public class XmlContacts {
 	
 	public static String fileName;
 	public static String path;
+	public static int ID = 0;
     /**
      * @param args the command line arguments
      * @throws IOException 
@@ -51,40 +52,8 @@ public class XmlContacts {
              JOptionPane.showMessageDialog(panel, "The file exist, you can go!", "All okey", JOptionPane.INFORMATION_MESSAGE);
          }
          
-         //***********************TEST************************
-         XMLWriter writer = new XMLWriter();
-         
-        // XMLModifyer modify = new XMLModifyer();
-         
-         
-         
-         
-         
-
-         
-         
-         /* AREA TEST
-         //faccio il parse del documento      
-         Document document = null;      
-         SAXReader reader = new SAXReader();
-         try {
-		 document = reader.read(path+fileName);
-		} catch (DocumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
         
          
-        //leggo l'attributo name dello studente 
-		Element root = document.getRootElement();
-         for (Iterator<Element> it = root.elementIterator(); it.hasNext();) {
-             Element element = it.next();
-             System.out.println(element.elementText("Name"));
-         }
-        
-       */
-
-   
     
     }
     

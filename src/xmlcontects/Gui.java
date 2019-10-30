@@ -295,7 +295,20 @@ public class Gui extends javax.swing.JFrame {
         	//creo il modifyer e gli fornisco i dati
         	XMLModifyer mod = new XMLModifyer();
         	mod.addPerson(nameFld.getText(), surnameFld.getText(), sex, numberFld.getText() );
+        	final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "New Person: "+"\r\n"+
+            			"Name: "+nameFld.getText()+"\r\n"+
+            			"Surname: "+surnameFld.getText()+"\r\n"+
+            			"Sex: "+sex+"\r\n"+
+            			"T Number: "+numberFld.getText()
+            			, "Add new Person!", JOptionPane.INFORMATION_MESSAGE);
         }
+        nameFld.setText("");
+        surnameFld.setText("");
+        numberFld.setText("");
+        rdbMale.setSelected(true);
+        rdbFema.setSelected(false);
+        
     }
 
     
