@@ -8,6 +8,8 @@ package xmlcontects;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -59,6 +61,8 @@ public class Gui extends javax.swing.JFrame {
         numberFld = new javax.swing.JTextField();
         addBtn = new javax.swing.JButton();
         removeBtn = new javax.swing.JButton();
+        PrintBtn = new javax.swing.JButton();
+        NewBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,12 +71,7 @@ public class Gui extends javax.swing.JFrame {
         searchBtn.setText("Search");
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-					searchBtnActionPerformed(evt);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+                searchBtnActionPerformed(evt);
             }
         });
 
@@ -96,25 +95,23 @@ public class Gui extends javax.swing.JFrame {
         addBtn.setText("Add");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-					addBtnActionPerformed(evt);
-				} catch (ParserConfigurationException | SAXException | IOException | TransformerException
-						| XMLStreamException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+                addBtnActionPerformed(evt);
             }
         });
 
         removeBtn.setText("Remove");
-        removeBtn.addActionListener(new java.awt.event.ActionListener() {
+
+        PrintBtn.setText("Print");
+        PrintBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-					removeBtnActionPerformed(evt);
-				} catch (ParserConfigurationException | SAXException | IOException | TransformerException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+                PrintBtnActionPerformed(evt);
+            }
+        });
+
+        NewBtn.setText("New File");
+        NewBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewBtnActionPerformed(evt);
             }
         });
 
@@ -126,14 +123,6 @@ public class Gui extends javax.swing.JFrame {
                 .addGap(276, 276, 276)
                 .addComponent(titleLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(findLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchBtn)
-                .addGap(18, 18, 18)
-                .addComponent(removeBtn)
-                .addGap(0, 103, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,9 +139,6 @@ public class Gui extends javax.swing.JFrame {
                                 .addComponent(numberFld, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(149, 149, 149))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(addBtn)
-                        .addGap(154, 154, 154))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(nameLbl)
                             .addComponent(jLabel1))
@@ -161,6 +147,23 @@ public class Gui extends javax.swing.JFrame {
                             .addComponent(surnameFld, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nameFld, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(133, 133, 133))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(PrintBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NewBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(addBtn)
+                        .addGap(154, 154, 154))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(findLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(removeBtn)
+                        .addGap(0, 103, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,7 +184,7 @@ public class Gui extends javax.swing.JFrame {
                     .addComponent(surnameFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rdbMale)
                     .addComponent(rdbFema))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -189,7 +192,10 @@ public class Gui extends javax.swing.JFrame {
                     .addComponent(numberLbl)
                     .addComponent(numberFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(addBtn)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addBtn)
+                    .addComponent(PrintBtn)
+                    .addComponent(NewBtn))
                 .addContainerGap(108, Short.MAX_VALUE))
         );
 
@@ -299,17 +305,27 @@ public class Gui extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(panel, "The contats file doesen't contain this element", "Error", JOptionPane.ERROR_MESSAGE);
           }
           
-          //**************+STAMPA******************************
-          java.io.File file = new java.io.File("./xmlTest.xml");
-          java.awt.Desktop.getDesktop().open(file);
-          
-          findLabel.setText("");
-          
+         
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void rdbFemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbFemaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rdbFemaActionPerformed
+
+    private void PrintBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintBtnActionPerformed
+        java.io.File file = new java.io.File("./xmlTest.xml");
+        try {
+            java.awt.Desktop.getDesktop().open(file);
+        } catch (IOException ex) {
+            Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
+          findLabel.setText("");
+    }//GEN-LAST:event_PrintBtnActionPerformed
+
+    private void NewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NewBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) throws ParserConfigurationException, SAXException, IOException, TransformerException, XMLStreamException {                                       
     	
@@ -395,6 +411,8 @@ public class Gui extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton NewBtn;
+    private javax.swing.JButton PrintBtn;
     private javax.swing.JButton addBtn;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField findLabel;
