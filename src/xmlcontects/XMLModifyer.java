@@ -1,5 +1,6 @@
 package xmlcontects;
 
+import java.awt.Desktop;
 import java.io.File;
 
 import java.io.IOException;
@@ -84,11 +85,13 @@ public class XMLModifyer {
                 	j++;
                 
                 }	
+                
+            
         	}	
         
         
        
-       
+     
         
         //metodi per la stampa del documeto (gia' illustrati nella classe XMLWriter)
         doc.getDocumentElement().normalize();

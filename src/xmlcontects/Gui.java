@@ -211,9 +211,11 @@ public class Gui extends javax.swing.JFrame {
 
     protected void removeBtnActionPerformed(java.awt.event.ActionEvent evt) throws ParserConfigurationException, SAXException, IOException, TransformerException {
 		
+    	//prende il nome dell'elemento da eliminare
     	String nameToFind = findLabel.getText();
 		System.out.println(nameToFind);
 		
+		//crea l'oggetto mod e poi applica il metodo deletePerson
 		XMLModifyer mod = new XMLModifyer();
 		mod.deletePerson(nameToFind);
 		
@@ -250,6 +252,7 @@ public class Gui extends javax.swing.JFrame {
         int i = 0;
  		Element root = document.getRootElement();
  		
+ 		//cicli per cercare l'elemento per nome e per cognome
         for (Iterator<Element> it = root.elementIterator(); it.hasNext();) {
               Element element = it.next();
               String contact = element.elementText("name");

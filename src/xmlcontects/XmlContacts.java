@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package xmlcontects;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -56,6 +57,8 @@ public class XmlContacts {
              final JPanel panel = new JPanel();
              JOptionPane.showMessageDialog(panel, "The file exist, you can go!", "All okey", JOptionPane.INFORMATION_MESSAGE);
          }
+         
+        
          
         
          

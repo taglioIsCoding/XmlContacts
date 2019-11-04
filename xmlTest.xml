@@ -1,149 +1,61 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <People xmlns="taglioIsCoding">
-                                                                                                                        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-                                                                                    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-                                                                                
-
-    
-    
-    
-    
-            
-
-    
-    
-    
-    
-            
-
-
-    
-    
-    
-        
-
-    
-    
-    
-        
-
-    
-    
-    
-        
-
-    
-    
-    
-        
-
-    
-    
-    
-    
-            
-
-    
-    
-    
-        
-
-
-
-    
-    
-    
-        
-    
-    
-    
-    
-    
                 
-    
-
-
-    
-    
-    
-    
-
     
     
     <Person>
-                        
+                                
         
-        <name>Mario</name>
-                        
+        
+        <name>Prova</name>
+                                
+        
         
         <surname>rossi</surname>
-                        
+                                
+        
         
         <sex>Male</sex>
-                        
+                                
         
-        <tNumber>0232930290</tNumber>
-                    
+        
+        <tNumber>0301111111</tNumber>
+                            
+    
     
     </Person>
+                
+    
+    
+    <Person>
+                                
         
-    
-    <Person>
-                
-        <name>luigi </name>
-                
-        <surname>verdi</surname>
-                
-        <sex>Male</sex>
-                
-        <tNumber>2143423</tNumber>
-            
-    </Person>
-    
-    <Person>
-        <name>lorenza</name>
-        <surname>viola</surname>
+        
+        <name>Mario</name>
+                                
+        
+        
+        <surname>prova</surname>
+                                
+        
+        
         <sex>Female</sex>
-        <tNumber>435325</tNumber>
+                                
+        
+        
+        <tNumber>030222222222222</tNumber>
+                            
+    
+    
+    </Person>
+            
+    
+
+
+    <Person>
+        <name>ciao</name>
+        <surname>bella</surname>
+        <sex>Male</sex>
+        <tNumber>324234</tNumber>
     </Person>
 </People>
