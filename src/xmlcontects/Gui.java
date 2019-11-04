@@ -11,8 +11,10 @@ import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileSystemView;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.transform.TransformerException;
@@ -111,7 +113,19 @@ public class Gui extends javax.swing.JFrame {
         });
 
         removeBtn.setText("Remove");
-
+        removeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+					removeBtnActionPerformed(evt);
+				} catch (ParserConfigurationException | SAXException | IOException | TransformerException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            }
+        });
+        
+        
+        
         PrintBtn.setText("Print");
         PrintBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,6 +245,8 @@ public class Gui extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    //metodo per eliminare un elemento
     protected void removeBtnActionPerformed(java.awt.event.ActionEvent evt) throws ParserConfigurationException, SAXException, IOException, TransformerException {
 		
     	//prende il nome dell'elemento da eliminare
@@ -247,6 +263,7 @@ public class Gui extends javax.swing.JFrame {
 		
 	}
 
+    //metodo per cercare un elemento
 	private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_searchBtnActionPerformed
         
     	if(findLabel.getText().isEmpty()){
@@ -292,7 +309,7 @@ public class Gui extends javax.swing.JFrame {
               }
           }
           
-          if (i==0) {
+          
         	  for (Iterator<Element> it = root.elementIterator(); it.hasNext();) {
                   Element element = it.next();
                   
@@ -308,7 +325,7 @@ public class Gui extends javax.swing.JFrame {
                 	  final JPanel panel = new JPanel();
                       JOptionPane.showMessageDialog(panel, contact+" "+name+" " + number, "I found:", JOptionPane.INFORMATION_MESSAGE);
                   }
-              }
+              
           }
           
           if (i==0) {
@@ -316,6 +333,8 @@ public class Gui extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(panel, "The contats file doesen't contain this element", "Error", JOptionPane.ERROR_MESSAGE);
           }
           
+          
+          findLabel.setText("");
          
     }//GEN-LAST:event_searchBtnActionPerformed
 
@@ -335,10 +354,26 @@ public class Gui extends javax.swing.JFrame {
     }//GEN-LAST:event_PrintBtnActionPerformed
 
     private void NewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewBtnActionPerformed
-        //crea una nuova rubrica vuota
-    	XMLWriter.newRubrica();
-        final JPanel panel = new JPanel();
-        JOptionPane.showMessageDialog(panel,"New File created!", "Info", JOptionPane.INFORMATION_MESSAGE);
+        
+    	//crea una nuova rubrica tramite filechooseer
+    	
+    	String resp = "Insert the file name";
+
+    	String name = JOptionPane.showInputDialog(null, resp);   
+    	
+    	JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+		jfc.setDialogTitle("Choose a directory to save your file: ");
+		jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+		int returnValue = jfc.showSaveDialog(null);
+		if (returnValue == JFileChooser.APPROVE_OPTION) {
+			if (jfc.getSelectedFile().isDirectory()) {
+				System.out.println("You selected the directory: " + jfc.getSelectedFile());
+				XMLWriter.newRubrica(jfc.getSelectedFile()+name+".xml");
+			}
+		}
+        
+        
         
     }//GEN-LAST:event_NewBtnActionPerformed
 

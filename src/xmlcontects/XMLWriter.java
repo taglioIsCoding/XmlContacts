@@ -72,8 +72,8 @@ public class XMLWriter {
         return node;
     }
     
-    //metodo per la creazione di una nuova rubrica vuota
-    public static void newRubrica() {
+    //metodo per la creazione di una nuova rubrica
+    public static void newRubrica(String filePath) {
     	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder;
         try{
@@ -99,7 +99,7 @@ public class XMLWriter {
 
             //stampa sul file e sulla console quello che ha fatto
             StreamResult console = new StreamResult(System.out);
-            StreamResult file = new StreamResult(new File("./xmlRubrica.xml"));
+            StreamResult file = new StreamResult(new File(filePath));
 
             //scrive i dati
             transformer.transform(source, console);
