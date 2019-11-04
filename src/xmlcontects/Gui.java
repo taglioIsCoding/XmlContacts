@@ -71,7 +71,12 @@ public class Gui extends javax.swing.JFrame {
         searchBtn.setText("Search");
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBtnActionPerformed(evt);
+                try {
+					searchBtnActionPerformed(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -95,7 +100,13 @@ public class Gui extends javax.swing.JFrame {
         addBtn.setText("Add");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBtnActionPerformed(evt);
+                try {
+					addBtnActionPerformed(evt);
+				} catch (ParserConfigurationException | SAXException | IOException | TransformerException
+						| XMLStreamException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -324,7 +335,11 @@ public class Gui extends javax.swing.JFrame {
     }//GEN-LAST:event_PrintBtnActionPerformed
 
     private void NewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewBtnActionPerformed
-        // TODO add your handling code here:
+        //crea una nuova rubrica vuota
+    	XMLWriter.newRubrica();
+        final JPanel panel = new JPanel();
+        JOptionPane.showMessageDialog(panel,"New File created!", "Info", JOptionPane.INFORMATION_MESSAGE);
+        
     }//GEN-LAST:event_NewBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) throws ParserConfigurationException, SAXException, IOException, TransformerException, XMLStreamException {                                       
