@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <People xmlns="taglioIsCoding">
-                                                        
+                                                                            
     
     
     
@@ -42,43 +42,73 @@
     
     
     
+    
+    
+    
+    
+    
     <Person>
-                                                        
+                                                                                                
+        
+        
+        
+        
+        
         
         
         
         
         
         <name>Michele</name>
-                                                        
+                                                                                                
+        
+        
+        
+        
+        
         
         
         
         
         
         <surname>Tagliani</surname>
-                                                        
+                                                                                                
+        
+        
+        
+        
+        
         
         
         
         
         
         <sex>Male</sex>
-                                                        
+                                                                                                
+        
+        
+        
+        
+        
         
         
         
         
         
         <tNumber>123231</tNumber>
-                                                    
+                                                                                            
+    
+    
+    
+    
+    
     
     
     
     
     
     </Person>
-                        
+                                            
 
 
     
@@ -88,6 +118,43 @@
     
     
     
+    
+
+
+    
+    
+    
+    
+    <Person>
+                                        
+        
+        
+        
+        <name>lorenzo</name>
+                                        
+        
+        
+        
+        <surname>cagni</surname>
+                                        
+        
+        
+        
+        <sex>Male</sex>
+                                        
+        
+        
+        
+        <tNumber>232423</tNumber>
+                                    
+    
+    
+    
+    </Person>
+                
+    
+
+
     
 
 </People>

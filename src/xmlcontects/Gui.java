@@ -91,11 +91,7 @@ public class Gui extends javax.swing.JFrame {
 
         buttonGroup1.add(rdbFema);
         rdbFema.setText("Female");
-        rdbFema.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdbFemaActionPerformed(evt);
-            }
-        });
+        
 
         numberLbl.setText("T Number:");
 
@@ -309,7 +305,7 @@ public class Gui extends javax.swing.JFrame {
               }
           }
           
-          
+      //leggo l'attributo cognome dello studente 
         	  for (Iterator<Element> it = root.elementIterator(); it.hasNext();) {
                   Element element = it.next();
                   
@@ -328,6 +324,7 @@ public class Gui extends javax.swing.JFrame {
               
           }
           
+        //se l'elemento non e' stato trovato genera un pannello di errore
           if (i==0) {
         	  final JPanel panel = new JPanel();
               JOptionPane.showMessageDialog(panel, "The contats file doesen't contain this element", "Error", JOptionPane.ERROR_MESSAGE);
@@ -338,10 +335,7 @@ public class Gui extends javax.swing.JFrame {
          
     }//GEN-LAST:event_searchBtnActionPerformed
 
-    private void rdbFemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbFemaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rdbFemaActionPerformed
-
+    //metodo per visualizzare il file xml
     private void PrintBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintBtnActionPerformed
         java.io.File file = new java.io.File("./xmlTest.xml");
         try {
@@ -353,6 +347,7 @@ public class Gui extends javax.swing.JFrame {
           findLabel.setText("");
     }//GEN-LAST:event_PrintBtnActionPerformed
 
+    //metodo per creare un nuovo file
     private void NewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewBtnActionPerformed
         
     	//crea una nuova rubrica tramite filechooseer
@@ -361,15 +356,17 @@ public class Gui extends javax.swing.JFrame {
 
     	String name = JOptionPane.showInputDialog(null, resp);   
     	
+    	//dichiaro il filechooser e lo ostro
     	JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 		jfc.setDialogTitle("Choose a directory to save your file: ");
 		jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-
+		
+		//se la cartella selezionata e' esatta crea il file
 		int returnValue = jfc.showSaveDialog(null);
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
 			if (jfc.getSelectedFile().isDirectory()) {
 				System.out.println("You selected the directory: " + jfc.getSelectedFile());
-				XMLWriter.newRubrica(jfc.getSelectedFile()+name+".xml");
+				XMLWriter.newRubrica(jfc.getSelectedFile()+ name +".xml");
 			}
 		}
         
@@ -377,6 +374,7 @@ public class Gui extends javax.swing.JFrame {
         
     }//GEN-LAST:event_NewBtnActionPerformed
 
+    //bottone per aggiungere un elemento
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) throws ParserConfigurationException, SAXException, IOException, TransformerException, XMLStreamException {                                       
     	
     	//controllo dei dati inseriti dall'utente
