@@ -67,7 +67,12 @@ public class Gui extends javax.swing.JFrame {
         searchBtn.setText("Search");
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBtnActionPerformed(evt);
+                try {
+					searchBtnActionPerformed(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -225,7 +230,7 @@ public class Gui extends javax.swing.JFrame {
 		
 	}
 
-	private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+	private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_searchBtnActionPerformed
         
     	if(findLabel.getText().isEmpty()){
             final JPanel panel = new JPanel();
@@ -293,6 +298,10 @@ public class Gui extends javax.swing.JFrame {
         	  final JPanel panel = new JPanel();
               JOptionPane.showMessageDialog(panel, "The contats file doesen't contain this element", "Error", JOptionPane.ERROR_MESSAGE);
           }
+          
+          //**************+STAMPA******************************
+          java.io.File file = new java.io.File("./xmlTest.xml");
+          java.awt.Desktop.getDesktop().open(file);
           
           findLabel.setText("");
           

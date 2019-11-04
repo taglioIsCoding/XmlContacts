@@ -1,17 +1,105 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <People xmlns="taglioIsCoding">
-                
+                            
+    
+    
+    
+    
+    
+    <Person>
+                                                        
+        
+        
+        
+        
+        
+        <name>Prova</name>
+                                                        
+        
+        
+        
+        
+        
+        <surname>rossi</surname>
+                                                        
+        
+        
+        
+        
+        
+        <sex>Male</sex>
+                                                        
+        
+        
+        
+        
+        
+        <tNumber>0301111111</tNumber>
+                                                    
+    
+    
+    
+    
+    
+    </Person>
+                            
+    
+    
+    
+    
+    
+    <Person>
+                                                        
+        
+        
+        
+        
+        
+        <name>Mario</name>
+                                                        
+        
+        
+        
+        
+        
+        <surname>prova</surname>
+                                                        
+        
+        
+        
+        
+        
+        <sex>Female</sex>
+                                                        
+        
+        
+        
+        
+        
+        <tNumber>030222222222222</tNumber>
+                                                    
+    
+    
+    
+    
+    
+    </Person>
+                        
+    
+
+
+    
     
     
     <Person>
                                 
         
         
-        <name>Prova</name>
+        <name>ciao</name>
                                 
         
         
-        <surname>rossi</surname>
+        <surname>bella</surname>
                                 
         
         
@@ -19,43 +107,31 @@
                                 
         
         
-        <tNumber>0301111111</tNumber>
-                            
-    
-    
-    </Person>
-                
-    
-    
-    <Person>
-                                
-        
-        
-        <name>Mario</name>
-                                
-        
-        
-        <surname>prova</surname>
-                                
-        
-        
-        <sex>Female</sex>
-                                
-        
-        
-        <tNumber>030222222222222</tNumber>
+        <tNumber>324234</tNumber>
                             
     
     
     </Person>
             
     
-
-
+    
     <Person>
+                        
+        
         <name>ciao</name>
-        <surname>bella</surname>
+                        
+        
+        <surname>bu</surname>
+                        
+        
         <sex>Male</sex>
-        <tNumber>324234</tNumber>
+                        
+        
+        <tNumber>+234234</tNumber>
+                    
+    
     </Person>
+        
+    
+
 </People>

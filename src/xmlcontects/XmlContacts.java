@@ -58,10 +58,17 @@ public class XmlContacts {
              JOptionPane.showMessageDialog(panel, "The file exist, you can go!", "All okey", JOptionPane.INFORMATION_MESSAGE);
          }
          
-        
+        /*
+        XMLWriter.newRubrica();
          
-        
+        */
          
+         /*
+         
+          File file = new File("./xmlTest");
+            
+          Desktop.getDesktop().open(file);
+         */
     
     }
     
